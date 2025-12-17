@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign Up - TutoTech</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="auth-page">
+  <main class="auth-main">
+    <header class="auth-header">
+      <a href="/index.html" class="logo">TutoTech</a>
+      <h1>Sign Up</h1>
+      <p class="muted">Create a Teacher or Student account</p>
+    </header>
+
+    <section class="auth-roles">
+      <div class="auth-role-card large">
+        <div class="auth-role-icon">👨‍🎓</div>
+        <h2>Student Sign Up</h2>
+        <form id="signup-student" class="auth-form">
+          <fieldset>
+            <legend>Essential Account Information</legend>
+            <label>First Name<input type="text" name="firstName" required></label>
+            <label>Last Name<input type="text" name="lastName" required></label>
+            <label>Institutional Email<input type="email" name="email" required placeholder="you@school.edu"></label>
+            <label>Password<input type="password" name="password" required minlength="8" placeholder="8+ characters, include number"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Academic Profile</legend>
+            <label>School/University Name<input type="text" name="school"></label>
+            <label>Level of Study<select name="level"><option>High School</option><option>Undergraduate</option><option>Graduate</option></select></label>
+            <label>Major/Field<input type="text" name="major"></label>
+            <label>Expected Graduation Year<input type="number" name="gradYear" min="2023" max="2100"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Verification & Security</legend>
+            <label>Student ID (optional)<input type="text" name="studentId"></label>
+            <label>Date of Birth<input type="date" name="dob"></label>
+            <label>Phone Number<input type="tel" name="phone"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Preferences</legend>
+            <label>Areas of Interest<input type="text" name="interests" placeholder="comma separated"></label>
+            <label>Communication Preferences<select name="commPref"><option>Weekly Newsletter</option><option>Account Alerts Only</option></select></label>
+            <label>Referral Source<input type="text" name="referral"></label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sign Up as Student</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-role-card large">
+        <div class="auth-role-icon">👨‍🏫</div>
+        <h2>Teacher Sign Up</h2>
+        <form id="signup-teacher" class="auth-form">
+          <fieldset>
+            <legend>Professional Identity</legend>
+            <label>Full Name & Title<input type="text" name="name" required placeholder="Dr. Jane Doe"></label>
+            <label>Professional Email<input type="email" name="email" required></label>
+            <label>Teacher ID / Certification<input type="text" name="certId"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Institutional Context</legend>
+            <label>School Name & Address<input type="text" name="school"></label>
+            <label>Subject(s) Taught<input type="text" name="subjects"></label>
+            <label>Grade Levels<input type="text" name="grades" placeholder="K-12, Higher Ed"></label>
+            <label>Class/Section Names (optional)<input type="text" name="sections"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Integration & Tools</legend>
+            <label>LMS Integration<select name="lms"><option>None</option><option>Google Classroom</option><option>Canvas</option><option>Moodle</option></select></label>
+            <label>Preferred Devices<input type="text" name="devices" placeholder="e.g., iPad, Chromebooks"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Verification & Trust</legend>
+            <label>Work Verification (link or upload) <input type="text" name="workVerify" placeholder="link to staff directory"></label>
+            <label>Role/Position<select name="role"><option>Classroom Teacher</option><option>Department Head</option><option>Administrator</option></select></label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sign Up as Teacher</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="auth-footer">
+      <p>Already have an account? <a href="/auth/login.html">Login</a></p>
+      <p class="muted">We never sell your data to third parties.</p>
+    </footer>
+  </main>
+
+  <script src="/auth/js/userModel.js"></script>
+  <script src="/auth/js/authController.js"></script>
+  <script src="/auth/js/authView.js"></script>
+</body>
+</html>

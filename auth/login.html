@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - TutoTech</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="auth-page">
+  <main class="auth-main">
+    <header class="auth-header">
+      <a href="/index.html" class="logo">TutoTech</a>
+      <h1>Login</h1>
+      <p class="muted">Choose your role to continue</p>
+    </header>
+
+    <section class="auth-roles">
+      <div class="auth-role-card">
+        <div class="auth-role-icon">👨‍🎓</div>
+        <h2>Student</h2>
+        <form id="login-student" class="auth-form">
+          <label>Institutional Email<input type="email" name="email" required placeholder="you@school.edu"></label>
+          <label>Password<input type="password" name="password" required minlength="8"></label>
+          <button type="submit" class="btn btn-primary">Login as Student</button>
+        </form>
+      </div>
+
+      <div class="auth-role-card">
+        <div class="auth-role-icon">👨‍🏫</div>
+        <h2>Teacher</h2>
+        <form id="login-teacher" class="auth-form">
+          <label>Professional Email<input type="email" name="email" required placeholder="you@school.edu"></label>
+          <label>Password<input type="password" name="password" required minlength="8"></label>
+          <button type="submit" class="btn btn-primary">Login as Teacher</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="auth-footer">
+      <p>Don't have an account? <a href="/auth/signup.html">Sign up</a></p>
+    </footer>
+  </main>
+
+  <script src="/auth/js/userModel.js"></script>
+  <script src="/auth/js/authController.js"></script>
+</body>
+</html>

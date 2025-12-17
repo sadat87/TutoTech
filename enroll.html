@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enroll - TutoTech</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="enroll-main">
+    <header class="enroll-header">
+      <a href="/index.html" class="logo">TutoTech</a>
+      <h1 id="enroll-title">Enroll</h1>
+      <p id="enroll-sub">Choose batch and schedule your sessions</p>
+    </header>
+
+    <section class="enroll-section">
+      <div class="enroll-card">
+        <h2 id="class-name">Class</h2>
+
+        <form id="enroll-form">
+          <div class="form-row">
+            <label>Choose Batch</label>
+            <div class="batch-options">
+              <label><input type="radio" name="batch" value="Batch 1" checked> Batch 1</label>
+              <label><input type="radio" name="batch" value="Batch 2"> Batch 2</label>
+              <label><input type="radio" name="batch" value="Batch 3"> Batch 3</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Preferred Date<input type="date" name="date" required></label>
+          </div>
+
+          <div class="form-row">
+            <label>Preferred Time<input type="time" name="time" required></label>
+          </div>
+
+          <div class="form-row">
+            <label>Full Name<input type="text" name="name" required></label>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Confirm Enrollment</button>
+            <a class="btn btn-secondary" href="/index.html">Back</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Read class name from query string
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name) || 'Class';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const className = getQueryParam('class');
+      document.getElementById('class-name').textContent = className;
+      document.getElementById('enroll-title').textContent = 'Enroll — ' + className;
+
+      document.getElementById('enroll-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert(`Enrollment confirmed for ${className}! We will contact you with details.`);
+        window.location.href = '/index.html';
+      });
+    });
+  </script>
+</body>
+</html>
