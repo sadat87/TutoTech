@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Test</title>
+    <style>
+        :root {
+            --bg: #f8f7fc;
+            --text: #1a1a1a;
+            --accent: #6366f1;
+        }
+        html[data-theme="dark"] {
+            --bg: #0f0f14;
+            --text: #ffffff;
+            --accent: #818cf8;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 2rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            color: var(--accent);
+        }
+        button {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theme Toggle Test</h1>
+    <button id="theme-toggle">Toggle Theme (Current: Light)</button>
+    <div class="status">
+        <p>Current theme: <strong id="current-theme">light</strong></p>
+        <p>Data-theme attribute: <strong id="data-theme">not set</strong></p>
+        <p>localStorage theme: <strong id="local-theme">not set</strong></p>
+    </div>
+
+    <script>
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('theme', theme);
+            updateStatus();
+            console.log('Theme set to:', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            console.log('Toggling from', current, 'to', newTheme);
+            setTheme(newTheme);
+            document.getElementById('theme-toggle').textContent = 'Toggle Theme (Current: ' + newTheme + ')';
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            document.getElementById('theme-toggle').textContent = 'Toggle Theme (Current: ' + savedTheme + ')';
+        }
+
+        function updateStatus() {
+            document.getElementById('current-theme').textContent = document.documentElement.getAttribute('data-theme') || 'light';
+            document.getElementById('data-theme').textContent = document.documentElement.getAttribute('data-theme') || 'not set';
+            document.getElementById('local-theme').textContent = localStorage.getItem('theme') || 'not set';
+        }
+
+        // Initialize
+        initializeTheme();
+
+        // Attach listener
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+        // Update status every second
+        setInterval(updateStatus, 500);
+    </script>
+</body>
+</html>

@@ -4,12 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Enroll - TutoTech</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="auth-page">
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">📚</span>
+        <h1>TutoTech</h1>
+      </a>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html#features" class="nav-link">Features</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#curriculum" class="nav-link">Curriculum</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <ul class="auth-nav-container">
+          <li><a href="index.html" class="nav-auth-btn">← Home</a></li>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Dark Mode">🌙</button>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
   <main class="enroll-main">
     <header class="enroll-header">
-      <a href="/index.html" class="logo">TutoTech</a>
       <h1 id="enroll-title">Enroll</h1>
       <p id="enroll-sub">Choose batch and schedule your sessions</p>
     </header>
@@ -42,13 +67,14 @@
 
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Confirm Enrollment</button>
-            <a class="btn btn-secondary" href="/index.html">Back</a>
+            <a class="btn btn-secondary" href="index.html">Back</a>
           </div>
         </form>
       </div>
     </section>
   </main>
 
+  <script src="script.js"></script>
   <script>
     // Read class name from query string
     function getQueryParam(name) {
@@ -64,7 +90,7 @@
       document.getElementById('enroll-form').addEventListener('submit', (e) => {
         e.preventDefault();
         alert(`Enrollment confirmed for ${className}! We will contact you with details.`);
-        window.location.href = '/index.html';
+        window.location.href = 'index.html';
       });
     });
   </script>

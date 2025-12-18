@@ -1,7 +1,53 @@
-// Cleaned main script for TutoTech
-// Loads after DOMContentLoaded to ensure elements exist
 
+// ==================== THEME INITIALIZATION (Outside DOMContentLoaded) ====================
+function setTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  localStorage.setItem('theme', theme);
+  console.log('Theme set to:', theme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  console.log('Toggling theme from', current, 'to', newTheme);
+  setTheme(newTheme);
+}
+
+function initializeTheme() {
+  // Load theme from localStorage, default to 'light'
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  console.log('Initializing theme with:', savedTheme);
+  setTheme(savedTheme);
+}
+
+// Initialize theme immediately (before DOM ready)
+initializeTheme();
+
+// ==================== GLOBAL EVENT DELEGATION ====================
+// Add theme toggle listener at document level (works immediately)
+document.addEventListener('click', (e) => {
+  if (e.target && (e.target.id === 'theme-toggle' || e.target.closest('#theme-toggle'))) {
+    console.log('Theme button clicked via global delegation');
+    toggleTheme();
+  }
+});
+
+// Attach event listeners when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle button listener
+  const themeToggle = document.querySelector('#theme-toggle');
+  if (themeToggle) {
+    console.log('Theme toggle button found, attaching direct listener');
+    themeToggle.addEventListener('click', toggleTheme);
+  } else {
+    console.log('Theme toggle button NOT found');
+  }
+
+  // ==================== ELEMENT REFERENCES ====================
   // Element references
   const navLinks = document.querySelectorAll('.nav-link');
   const hamburger = document.querySelector('.hamburger');
